@@ -1,0 +1,22 @@
+.Card {
+    display: flex;
+    flex-flow: column;
+    align-content: center;
+    justify-content: center;
+
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+}
+
+.Card span, .Card button, .Card div {
+    /* display: block; */
+    margin: 0 auto;
+}
+
+.Card img {
+    width: 60%;
+    padding: 30px 20px;
+    display: block;
+    margin: 0 auto;
+}
