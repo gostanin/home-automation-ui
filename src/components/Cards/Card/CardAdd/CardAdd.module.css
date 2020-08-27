@@ -1,0 +1,22 @@
+.Card {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    margin: 10px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.Card img {
+    width: 60%;
+    padding: 30px 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.Card img:hover {
+    cursor: pointer;
+}

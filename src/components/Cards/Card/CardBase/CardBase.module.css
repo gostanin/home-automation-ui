@@ -1,22 +1,33 @@
 .Card {
     display: flex;
     flex-flow: column;
-    align-content: center;
+    align-items: center;
     justify-content: center;
-
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     margin: 10px;
+    padding: 0 20px;
 }
 
-.Card span, .Card button, .Card div {
-    /* display: block; */
-    margin: 0 auto;
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+}
+
+.nameHeader {
+    margin: 0;
+    margin-right: 15px;
+    padding: 0;
 }
 
 .Card img {
     width: 60%;
     padding: 30px 20px;
+    padding-top: 10px;
     display: block;
     margin: 0 auto;
 }

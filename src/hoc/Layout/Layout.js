@@ -1,16 +1,17 @@
 import React from 'react';
 
+import styles from './Layout.module.css';
 import Toolbar from '../../components/Toolbar/Toolbar';
 
-const layout = (props) => {
+const Layout = (props) => {
     return (
         <React.Fragment>
             <Toolbar />
-            <main>
+            <main className={styles.Content}>
                 {props.children}
             </main>
         </React.Fragment>
     )
 }
 
-export default layout;
+export default Layout;

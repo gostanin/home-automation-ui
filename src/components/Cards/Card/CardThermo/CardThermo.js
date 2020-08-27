@@ -1,49 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-// import styles from './CardThermo.module.css';
+import { Select, MenuItem } from '@material-ui/core/';
+import axios from '../../../../axios-base';
+
+import styles from './CardThermo.module.css';
 import tempHot from '../../../../assets/temphot.png';
 import tempCold from '../../../../assets/tempcold.png'; import Card from '../CardBase/CardBase';
-import { Select, MenuItem } from '@material-ui/core/';
 
 const CardThermo = (props) => {
     const [isHot, setIsHot] = useState(false);
-    const [selectValue, setSelectValue] = useState(0)
+    const [temp, setTemp] = useState(props.temp);
 
-    const tempChangeHandler = (event) => {
-        const value = event.target.value;
-        console.log(value)
-        if (value > 0) {
-            setIsHot(true);
+    useEffect(() => {
+        setIsHot(testTemp(props.temp));
+    }, [props.temp])
+
+    const testTemp = (temp) => {
+        console.log(temp)
+        if (temp > 0) {
+            return true;
         }
         else {
-            setIsHot(false);
+            return false;
         }
-        
-        setSelectValue(value);
     }
 
+    const tempChangeHandler = (event) => {
+        const updatedTemp = event.target.value;
+        setIsHot(testTemp(updatedTemp));
+        setTemp(updatedTemp);
+        updateTemp(updatedTemp);
+    }
+
+    const updateTemp = (temp) => {
+        axios.put(`/thermostats/${props.id}`, { temp: temp })
+            .catch(error => console.log(error));
+    }
+
+    const deleteCard = () => {
+        axios.delete(`/thermostats/${props.id}`)
+            .then(() => props.deleteHandler('Thermo'))
+            .catch(error => console.log(error));
+    }
+
+    const menuItems = [...Array(301).keys()].map(number => <MenuItem key={number} value={number - 20}>{number - 20}</MenuItem>)
+
     return (
-        <Card ImagePath={isHot ? tempHot : tempCold}>
+        <Card ImagePath={isHot ? tempHot : tempCold} name={props.name} deleteHandler={deleteCard}>
             <Select
-                value={selectValue}
+                value={temp}
                 onChange={tempChangeHandler}
-                inputProps={{ 'aria-label': 'Without label' }}>
-                <MenuItem value={-20}>-20</MenuItem>
-                <MenuItem value={-15}>-15</MenuItem>
-                <MenuItem value={-10}>-10</MenuItem>
-                <MenuItem value={-5}>-5</MenuItem>
-                <MenuItem value={-0}>0</MenuItem>
-                <MenuItem value={5}>5</MenuItem>
-                <MenuItem value={10}>10</MenuItem>
-                <MenuItem value={15}>15</MenuItem>
-                <MenuItem value={20}>20</MenuItem>
+                className={styles.root}>
+                {menuItems}
             </Select>
-            {/* <Button 
-                variant="outlined"
-                color="primary"
-                disableElevation>
-                    Settings
-            </Button>     */}
         </Card>
     );
 }
