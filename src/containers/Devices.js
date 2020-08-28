@@ -23,9 +23,7 @@ const Devices = (props) => {
     }
 
     const modalSubmitHandler = (type, data) => {
-        console.log(data.type);
         const url = type === "Light" ? "/lights" : "/thermostats";
-        console.log(data);
         axios.post(url, data).then(() => type === "Light" ? fetchLights() : fetchThermo())
             .then(() => modalCloseHandler())
             .catch(error => console.log(error));
