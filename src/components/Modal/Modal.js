@@ -9,7 +9,7 @@ import styles from './Modal.module.css';
 
 const ModalCustom = (props) => {
     const [type, setType] = useState("Light");
-    const [ligthStatus, setLigthStatus] = useState(false);
+    const [lightStatus, setLightStatus] = useState(false);
     const [temp, setTemp] = useState(0);
     const [name, setName] = useState("");
 
@@ -19,7 +19,7 @@ const ModalCustom = (props) => {
 
     const selectChangeLightStatus = (event) => {
         const status = event.target.value === 'On' ? true : false;
-        setLigthStatus(status);
+        setLightStatus(status);
     }
 
     const selectChangeThermoStatus = (event) => {
@@ -36,15 +36,20 @@ const ModalCustom = (props) => {
         if (type === "Light") {
             data = {
                 ...data,
-                status: ligthStatus
+                status: lightStatus
             }
+            setLightStatus(false);
         }
         else {
             data = {
                 ...data,
                 temp: temp
             }
+            setTemp(0);
         }
+        setType("Light");
+        setName("");
+
         props.submitData(type, data);
     }
 
@@ -56,7 +61,7 @@ const ModalCustom = (props) => {
             <React.Fragment>
                 <FormHelperText>Light status</FormHelperText>
                 <Select
-                    value={ligthStatus ? 'On' : 'Off'}
+                    value={lightStatus ? 'On' : 'Off'}
                     onChange={selectChangeLightStatus}
                     className={styles.root}>
                     {menuItems}
