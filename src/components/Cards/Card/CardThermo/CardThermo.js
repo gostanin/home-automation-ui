@@ -16,7 +16,6 @@ const CardThermo = (props) => {
     }, [props.temp])
 
     const testTemp = (temp) => {
-        console.log(temp)
         if (temp > 0) {
             return true;
         }
