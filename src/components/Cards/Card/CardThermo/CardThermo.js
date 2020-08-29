@@ -32,7 +32,7 @@ const CardThermo = (props) => {
     }
 
     const updateTemp = (temp) => {
-        axios.put(`/thermostats/${props.id}`, { temp: temp })
+        axios.put(`/thermostats/${props.id}/temp`, { temp: temp })
             .catch(error => console.log(error));
     }
 
