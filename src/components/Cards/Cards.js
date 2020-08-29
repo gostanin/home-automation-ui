@@ -17,8 +17,6 @@ const Cards = (props) => {
         setDevices(updatedDevices);
     }, [props]);
 
-    console.log('rendering');
-
     const cards = devices.map(device => {
         return (
             device.type === 'Light'
