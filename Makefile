@@ -1,8 +1,8 @@
 docker_up:
-	docker-compose up -d --build --remove-orphans --force-recreate
+	docker-compose -p home-automation-ui up -d --build --remove-orphans --force-recreate
 
 docker_stop:
-	docker-compose stop
+	docker-compose -p home-automation-ui stop
 
 docker_down:
-	docker-compose down -v
+	docker-compose -p home-automation-ui down -v
