@@ -1,7 +1,5 @@
 ## Installation
 
-### home-automation-ui (Front-end):
-
 Application served on _localhost:3000_
 
 In case home-automation-api (Back-end) is not served on _localhost:8000/api/v1/_ the base path for api could be changed in `src/axios-base.js`
