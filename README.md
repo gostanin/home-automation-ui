@@ -2,7 +2,7 @@
 
 Application served on _localhost:3000_
 
-In case home-automation-api (Back-end) is not served on _localhost:8000/api/v1/_ the base path for api could be changed in `src/axios-base.js`
+In case home-automation-api (back end) is not served on _localhost:8000/api/v1/_ the base path for api could be changed in `src/axios-base.js`
 
 #### 	Docker:
 
